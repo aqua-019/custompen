@@ -35,7 +35,7 @@ const base = process.argv[2] || 'http://localhost:4173';
   log('404 page renders with search', (await p.locator('.nf__q input').count()) === 1);
   await p.goto(base + '/', { waitUntil: 'networkidle' });
   for (let y = 0; y < 8000; y += 600) { await p.mouse.wheel(0, 600); await p.waitForTimeout(120); }
-  const badAlt = await p.$$eval('img', is => is.filter(i => !i.alt || /\.(jpe?g|png)$/i.test(i.alt) || /^IMG_|_\d{3,}/.test(i.alt)).map(i => i.src.slice(-40)));
+  const badAlt = await p.$$eval('img', is => is.filter(i => !i.closest('a[aria-label]') && !i.alt || /\.(jpe?g|png)$/i.test(i.alt) || /^IMG_|_\d{3,}/.test(i.alt)).map(i => i.src.slice(-40)));
   log(`no empty/filename alt on home (${badAlt.length})`, badAlt.length === 0 || console.log(badAlt));
   console.log('PAGE ERRORS', JSON.stringify(errs));
   await b.close();

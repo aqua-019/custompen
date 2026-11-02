@@ -64,7 +64,9 @@ ASSERT :: cart :: the cart is a native <dialog> opened with showModal() :: PER=D
 ASSERT :: all :: no <img> ships an empty or filename alt :: PER=audit M04 (accessibility)
 ASSERT :: 404 :: photo-headed page with search field and popular links :: PER=D6185 (Photo-headed institutional 404) · D0865 (Friendly 404 page)
 
-MEASURE :: CAP-24 run 2 Nov 2026 against the production build (vite preview, Chromium/Playwright, 1440×900 + reduced-motion reload). Re-run with `node scripts/cap24.cjs <preview-url>`.
+MEASURE :: LIVE — https://custompen.vercel.app (Vercel team aquatic, auto-deploys from aqua-019/custompen main). CAP-24 re-run against the live URL on 2 Nov 2026: 20/20 VERIFIED, e2e 14/14.
+
+First run 2 Nov 2026 against the production build (vite preview, Chromium/Playwright, 1440×900 + reduced-motion reload). Re-run with `node scripts/cap24.cjs <preview-url>`.
 
 ```
 VERIFIED :: all :: --bg = #141210 :: measured=rgb(20, 18, 16)
