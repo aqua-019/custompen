@@ -64,4 +64,31 @@ ASSERT :: cart :: the cart is a native <dialog> opened with showModal() :: PER=D
 ASSERT :: all :: no <img> ships an empty or filename alt :: PER=audit M04 (accessibility)
 ASSERT :: 404 :: photo-headed page with search field and popular links :: PER=D6185 (Photo-headed institutional 404) · D0865 (Friendly 404 page)
 
-MEASURE ::
+MEASURE :: CAP-24 run 2 Nov 2026 against the production build (vite preview, Chromium/Playwright, 1440×900 + reduced-motion reload). Re-run with `node scripts/cap24.cjs <preview-url>`.
+
+```
+VERIFIED :: all :: --bg = #141210 :: measured=rgb(20, 18, 16)
+VERIFIED :: all :: body color = #ede6d8 :: measured=rgb(237, 230, 216)
+VERIFIED :: all :: --surface = #1f1b16 :: measured=#1f1b16
+VERIFIED :: all :: hover transform delta = 0 and box-shadow delta = 0 :: measured=7 probed, 0 moved, 7 recoloured
+VERIFIED :: all :: hover transitions animate colour properties only :: measured=all|color|background-color|border-color|text-decoration-color
+VERIFIED :: all :: every transition-timing-function = cubic-bezier(0.165, 0.84, 0.44, 1) :: measured=cubic-bezier(0.165, 0.84, 0.44, 1) dur=0s|0.2s
+VERIFIED :: all :: :focus-visible outline = 2px solid #7fa7ff :: measured=solid 2px rgb(127, 167, 255)
+VERIFIED :: all :: h1–h3 text-wrap = balance; p = pretty :: measured={"h":"balance","p":"pretty"}
+VERIFIED :: all :: prices/dates font-variant-numeric tabular-nums
+VERIFIED :: header :: only chromatic fill is the membership pill :: measured=pill:rgb(224, 192, 112)
+VERIFIED :: header :: sticky, never hidden on scroll :: measured=sticky top=0
+VERIFIED :: all :: no <img> ships empty or filename alt (decorative imgs inside labelled links excepted) :: measured=0/110
+VERIFIED :: page :: prose column max-width = 640px :: measured=640px
+VERIFIED :: workshops :: filters are URL keys and document.title lists them :: measured=Workshops: Wet Plate — Penumbra Foundation
+VERIFIED :: workshops :: holdings count precedes the filters
+VERIFIED :: workshop-detail :: all tuition tiers render with price + availability before selection :: measured=4 tiers
+VERIFIED :: shop :: native ratio thumbnails, sold-out hidden by default :: measured={"ar":"7728 / 5152","sold":0}
+VERIFIED :: cart :: native <dialog> via showModal() :: measured=DIALOG open=true modal=true
+VERIFIED :: 404 :: photo-headed with search + popular links
+VERIFIED :: all :: reduced motion → every transition-duration = 0s :: measured=0s
+
+CAP-24 20/20 VERIFIED · failed=0
+```
+
+E2E flows (scripts/e2e.cjs): filter→URL→reload, tier register→cart dialog→checkout hand-off to the live URL, shop defaults, persisted cart count, ⌘K search, 404: 13/13 pass. Mobile 390px: zero horizontal overflow on /, /workshops, /workshops/*, /penumbra-store, /membership-main, /book-session, /upcoming-exhibitions, /about. Internal links: 743 checked, 0 broken after rerouting 11 dead past-workshop links.
