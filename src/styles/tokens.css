@@ -1,0 +1,88 @@
+/* CUSTOMPEN tokens — SP-01. Palette: PAL Selenium Editorial (Darkroom) with the
+   Anthropic Ivory ground as its Paper twin (PALPAIR-04: gold accent only, never clay).
+   Every state colour is derived (PALRULE-05), never hand-picked. */
+
+:root {
+  /* type */
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  /* D3021 two-point fluid scale, 360 → 1440 */
+  --step--1: clamp(0.8125rem, 0.7917rem + 0.0926vw, 0.875rem);
+  --step-0: clamp(1.0625rem, 1.0208rem + 0.1852vw, 1.1875rem);
+  --step-1: clamp(1.25rem, 1.1667rem + 0.3704vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.3333rem + 0.7407vw, 2rem);
+  --step-3: clamp(1.875rem, 1.5417rem + 1.4815vw, 2.875rem);
+  --step-4: clamp(2.375rem, 1.6667rem + 3.1481vw, 4.5rem);
+  --step-5: clamp(2.875rem, 1.5rem + 6.1111vw, 7rem);
+  --step-6: clamp(3.5rem, 0.5rem + 13.3333vw, 12.5rem);
+  --label: 0.75rem;
+  --track: 0.11em; /* D5294 one tracking constant for every uppercase role */
+
+  /* space */
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.5rem;
+  --s-6: 2rem; --s-7: 3rem; --s-8: 4rem; --s-9: clamp(4rem, 2.5rem + 6vw, 8rem);
+
+  /* layout — D3034 wide container, narrow content; D3032 measure cap */
+  --shell: 1400px;
+  --measure: 40rem;
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 2.5rem);
+  --header-h: 64px;
+
+  /* motion — MK-01, one voice (LAW-16): out-quart, house durations */
+  --ease: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --t-hover: 0.2s;
+  --t-open: 0.344s;
+  --t-long: 0.414s;
+
+  --radius: 2px;
+}
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #141210;
+  --surface: #1f1b16;
+  --surface-2: color-mix(in oklab, #1f1b16 88%, #ede6d8);
+  --ink: #ede6d8;
+  --ink-rgb: 237 230 216;
+  --ink-2: #a39e94;   /* 7.0:1 on bg */
+  --ink-3: #8b877e;   /* 5.2:1 on bg */
+  --primary: #c8a04b;
+  --primary-hover: color-mix(in oklab, #c8a04b 82%, #ede6d8);
+  --primary-shade: color-mix(in oklab, #c8a04b 55%, #141210);
+  --on-primary: #141210;
+  --accent: #e0c070;  /* links, markers, active state */
+  --danger: #e08a70;
+  --plate: #191612;   /* artwork plate behind uncropped images */
+  --tint: rgb(var(--ink-rgb) / 0.05);
+  --body-track: 0.2px; /* D4307 */
+  --shadow-veil: 20 18 16;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #faf9f5;
+  --surface: #f0eee6;
+  --surface-2: color-mix(in oklab, #f0eee6 85%, #141413);
+  --ink: #141413;
+  --ink-rgb: 20 20 19;
+  --ink-2: #5e5d59;
+  --ink-3: #6b6b69;
+  --primary: #c8a04b;
+  --primary-hover: color-mix(in oklab, #c8a04b 85%, #141413);
+  --primary-shade: color-mix(in oklab, #c8a04b 60%, #141413);
+  --on-primary: #141413;
+  --accent: #776132;  /* gold derived toward ink: 5.6:1 on paper */
+  --danger: #a3412a;
+  --plate: #ebe8de;
+  --tint: rgb(var(--ink-rgb) / 0.05);
+  --body-track: 0px;
+  --shadow-veil: 20 20 19;
+}
+
+:root {
+  --line: rgb(var(--ink-rgb) / 0.14);       /* D4198 alpha line */
+  --line-strong: rgb(var(--ink-rgb) / 0.28);
+  --hover-tint: rgb(var(--ink-rgb) / 0.06);
+}
